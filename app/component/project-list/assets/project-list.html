@@ -1,0 +1,68 @@
+<div ng-if="PLC.projectListViewModel.showTemplate" class="results">
+	
+	<div ng-init="PLC.setSearchArray()" class="bar">
+		<input type="text" ng-model="PLC.searchString" placeholder="Search (By Name)" ng-change="PLC.searchitems()" auto-complete="PLC.autoCompleteOptions"/>
+	</div>
+	
+	<ul>
+		<li ng-repeat="i in PLC.projectListViewModel.displayListSet">
+			<a href={{i.url}} target="_blank">
+				<h3 class="heading">{{i.title}}
+					<span ng-if="i.type !== ''">({{i.type}})</span>
+				</h3>
+			</a>
+			<div class="project-left-col">
+				<p>
+					<img src="/component/project-list/assets/images/blogging.svg" height="20" width="20"/>
+					<span>Creator: </span><span>{{i.by}}</span>
+				</p>
+				<p>
+					<img src="/component/project-list/assets/images/worldwide.svg" height="20" width="20"/>
+					<span>Location: </span><span>{{i.location}}</span>, <span>{{i.country}}</span>
+				</p>
+			</div>
+			<div class="project-right-col">
+				<p>
+					<img src="/component/project-list/assets/images/alarm-clock.svg" height="20" width="20"/>
+					<span>End Date: </span>
+					<span>{{i['end.time'].substr(0,10)}}</span>
+				</p>
+				<p>
+					<img src="/component/project-list/assets/images/cost.svg" height="20" width="20"/>
+					<span>Budget: </span>
+					<span>{{i['amt.pledged']}}</span>
+					<span> {{i.currency.toUpperCase()}}</span>
+				</p>
+			</div>
+			<div class="blurb">
+				<img src="/component/project-list/assets/images/view-list.svg" height="20" width="20"/>
+				<p class="blurb-content">
+					<span>Blurb: </span>
+					<span>{{i.blurb}}</span>
+				</p>
+			</div>
+		</li>
+	</ul>
+	
+	<div class="page-nav-bar">
+		<button ng-hide="PLC.page === 1" ng-click="PLC.showPreviousProjectSet()" class="direction-btn">Previous</button>
+		<span class="page-index">{{PLC.page}}</span>
+		<button ng-hide="PLC.page * 10 >= PLC.projectListViewModel.displayList.length" ng-click="PLC.showNextProjectSet()" class="direction-btn">Next</button>
+	</div>
+
+</div>
+
+
+<div class="sort-wrapper">
+	<p class="sort-heading">Sort By</p>
+	<p class="sort-input">
+		<input type="radio" ng-model="PLC.budget" value="lowToHigh" ng-click="PLC.sortByBudget()"> Budget - Low to High
+	</p>
+	<p class="sort-input">
+		<input type="radio" ng-model="PLC.budget" value="highToLow" ng-click="PLC.sortByBudget()"> Budget - High to Low
+	</p>
+	<br><br>
+	<p class="sort-input"><input type="radio" ng-model="PLC.year" value="oldTONew" ng-click="PLC.sortByYear()"> Old to New</p>
+	<p class="sort-input"><input type="radio" ng-model="PLC.year" value="newToOld" ng-click="PLC.sortByYear()"> New to Old</p>
+	<button ng-click="PLC.resetDisplayList()" class="reset-btn">Reset List</button>
+</div>

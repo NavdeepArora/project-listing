@@ -1,0 +1,1 @@
+var projectList = angular.module('project-list', ['autoCompleteModule']);
