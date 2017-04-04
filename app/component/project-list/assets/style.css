@@ -204,3 +204,13 @@ p {
 	display: flex;
     padding-left: 10px;
 }
+
+@media only screen and (max-width: 900px) {
+	.project-right-col {
+		width:100%;
+	}
+
+	.project-left-col {
+		width:100%
+	}
+}

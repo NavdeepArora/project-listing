@@ -31,6 +31,7 @@ gieomProjectListingApp.config([
                     ProjectListService.getProjectList().then (function (response) {
                         ProjectListViewModel.projectList = response.data;
                         ProjectListViewModel.showTemplate = true;
+                        ProjectListService.addDomainToUrl();
                     });
                 }]
             }

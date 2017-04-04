@@ -10,7 +10,6 @@ function ProjectListCtrlFn($filter, ProjectListViewModel){
     this.page = 1;
     this.searchArray = [];
     this.autoCompleteOptions = {};
-    this.addDomainToUrl();
     this.setSearchArray();
 };
 
@@ -84,12 +83,4 @@ ProjectListCtrlFn.prototype.showNextProjectSet = function () {
 ProjectListCtrlFn.prototype.showProjectSet = function () {
     var self = this;
     this.projectListViewModel.displayListSet = angular.copy(self.projectListViewModel.displayList.slice((self.page - 1) * 10, self.page * 10));
-};
-
-ProjectListCtrlFn.prototype.addDomainToUrl = function () {
-    angular.forEach(this.projectListViewModel.projectList, function(item){
-        if(item.url){
-            item.url = 'https://www.kickstarter.com/' + item.url;
-        }
-    });
 };
