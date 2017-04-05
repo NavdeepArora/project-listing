@@ -1,7 +1,7 @@
 <div ng-if="PLC.projectListViewModel.showTemplate" class="results">
 	
 	<div class="bar">
-		<input type="text" ng-model="PLC.projectListViewModel.searchString" placeholder="Search (By Name)" ng-change="PLC.searchitems()" auto-complete="PLC.projectListViewModel.autoCompleteOptions"/>
+		<input validate-navdeep-directive type="text" ng-model="PLC.projectListViewModel.searchString" placeholder="Search (By Name)" ng-change="PLC.searchitems()" auto-complete="PLC.projectListViewModel.autoCompleteOptions" />
 	</div>
 	
 	<ul>
