@@ -1,7 +1,7 @@
 <div ng-if="PLC.projectListViewModel.showTemplate" class="results">
 	
-	<div ng-init="PLC.setSearchArray()" class="bar">
-		<input type="text" ng-model="PLC.searchString" placeholder="Search (By Name)" ng-change="PLC.searchitems()" auto-complete="PLC.autoCompleteOptions"/>
+	<div class="bar">
+		<input type="text" ng-model="PLC.projectListViewModel.searchString" placeholder="Search (By Name)" ng-change="PLC.searchitems()" auto-complete="PLC.projectListViewModel.autoCompleteOptions"/>
 	</div>
 	
 	<ul>
@@ -45,9 +45,9 @@
 	</ul>
 	
 	<div class="page-nav-bar">
-		<button ng-hide="PLC.page === 1" ng-click="PLC.showPreviousProjectSet()" class="direction-btn">Previous</button>
-		<span class="page-index">{{PLC.page}}</span>
-		<button ng-hide="PLC.page * 10 >= PLC.projectListViewModel.displayList.length" ng-click="PLC.showNextProjectSet()" class="direction-btn">Next</button>
+		<button ng-hide="PLC.projectListViewModel.page === 1" ng-click="PLC.showPreviousProjectSet()" class="direction-btn">Previous</button>
+		<span class="page-index">{{PLC.projectListViewModel.page}}</span>
+		<button ng-hide="PLC.projectListViewModel.page * 10 >= PLC.projectListViewModel.displayList.length" ng-click="PLC.showNextProjectSet()" class="direction-btn">Next</button>
 	</div>
 
 </div>
@@ -56,13 +56,13 @@
 <div class="sort-wrapper">
 	<p class="sort-heading">Sort By</p>
 	<p class="sort-input">
-		<input type="radio" ng-model="PLC.budget" value="lowToHigh" ng-click="PLC.sortByBudget()"> Budget - Low to High
+		<input type="radio" ng-model="PLC.projectListViewModel.budget" value="lowToHigh" ng-click="PLC.sortByBudget()"> Budget - Low to High
 	</p>
 	<p class="sort-input">
-		<input type="radio" ng-model="PLC.budget" value="highToLow" ng-click="PLC.sortByBudget()"> Budget - High to Low
+		<input type="radio" ng-model="PLC.projectListViewModel.budget" value="highToLow" ng-click="PLC.sortByBudget()"> Budget - High to Low
 	</p>
 	<br><br>
-	<p class="sort-input"><input type="radio" ng-model="PLC.year" value="oldTONew" ng-click="PLC.sortByYear()"> Old to New</p>
-	<p class="sort-input"><input type="radio" ng-model="PLC.year" value="newToOld" ng-click="PLC.sortByYear()"> New to Old</p>
-	<button ng-click="PLC.resetDisplayList()" class="reset-btn">Reset List</button>
+	<p class="sort-input"><input type="radio" ng-model="PLC.projectListViewModel.year" value="oldTONew" ng-click="PLC.sortByYear()"> Old to New</p>
+	<p class="sort-input"><input type="radio" ng-model="PLC.projectListViewModel.year" value="newToOld" ng-click="PLC.sortByYear()"> New to Old</p>
+	<button ng-click="PLC.projectListService.resetDisplayList()" class="reset-btn">Reset List</button>
 </div>
