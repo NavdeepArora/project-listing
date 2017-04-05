@@ -13,7 +13,7 @@ function ProjectListCtrlFn($filter, ProjectListViewModel, ProjectListService){
 
 ProjectListCtrlFn.prototype.searchitems = function () {
     var self = this;
-    this.projectListViewModel.displayList = this.filter('searchForName')(angular.copy(self.projectListViewModel.projectList), self.searchString);
+    this.projectListViewModel.displayList = this.filter('searchForName')(angular.copy(self.projectListViewModel.projectList), self.projectListViewModel.searchString);
     this.projectListViewModel.budget = false;
     this.projectListViewModel.year = false;
     this.projectListViewModel.page = 1;
